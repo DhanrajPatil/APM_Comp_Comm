@@ -1,3 +1,6 @@
+import { ProductShellDetailComponent } from './product-shell/product-shell-detail.component';
+import { ProductShellListComponent } from './product-shell/product-shell-list.component';
+import { ProductShellComponent } from './product-shell/product-shell.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -10,22 +13,25 @@ import { ProductEditComponent } from './edit/product-edit.component';
 import { ProductEditGuard } from './edit/product-edit-guard.service';
 
 @NgModule({
-  imports: [
-    SharedModule,
-    RouterModule.forChild([
-      { path: '', component: ProductListComponent },
-      { path: ':id', component: ProductDetailComponent },
-      {
-        path: ':id/edit',
-        canDeactivate: [ProductEditGuard],
-        component: ProductEditComponent
-      }
-    ])
-  ],
-  declarations: [
-    ProductListComponent,
-    ProductDetailComponent,
-    ProductEditComponent
-  ]
+    imports: [
+        SharedModule,
+        RouterModule.forChild([
+            { path: '', component: ProductShellComponent },
+            { path: ':id', component: ProductDetailComponent },
+            {
+                path: ':id/edit',
+                canDeactivate: [ProductEditGuard],
+                component: ProductEditComponent
+            }
+        ])
+    ],
+    declarations: [
+        ProductListComponent,
+        ProductDetailComponent,
+        ProductEditComponent,
+        ProductShellComponent,
+        ProductShellListComponent,
+        ProductShellDetailComponent
+    ]
 })
 export class ProductModule { }

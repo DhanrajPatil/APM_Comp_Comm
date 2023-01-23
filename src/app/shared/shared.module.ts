@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { StarComponent } from './star.component';
+import { FilterCriteriaComponent } from './filter-criteria/filter-criteria.component';
 
 @NgModule({
   imports: [
@@ -10,12 +11,14 @@ import { StarComponent } from './star.component';
     FormsModule
   ],
   declarations: [
-    StarComponent
+    StarComponent,
+    FilterCriteriaComponent
   ],
   exports: [
     StarComponent,
     CommonModule,
-    FormsModule
+    FormsModule,
+    FilterCriteriaComponent
   ]
 })
 export class SharedModule { }

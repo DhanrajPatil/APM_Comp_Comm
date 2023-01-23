@@ -5,35 +5,35 @@ import { IProduct } from './product';
 import { ProductService } from './product.service';
 
 @Component({
-  templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.css']
+    templateUrl: './product-detail.component.html',
+    styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-  pageTitle = 'Product Detail';
-  product?: IProduct;
-  errorMessage = '';
+    pageTitle = 'Product Detail';
+    product?: IProduct;
+    errorMessage = '';
 
-  constructor(private productService: ProductService,
-    private router: Router,
-    private route: ActivatedRoute) {
-  }
-
-  ngOnInit(): void {
-    const param = this.route.snapshot.paramMap.get('id');
-    if (param) {
-      const id = +param;
-      this.getProduct(id);
+    constructor(private productService: ProductService,
+        private router: Router,
+        private route: ActivatedRoute) {
     }
-  }
 
-  getProduct(id: number) {
-    this.productService.getProduct(id).subscribe({
-      next: product => this.product = product,
-      error: err => this.errorMessage = err
-    });
-  }
+    ngOnInit(): void {
+        const param = this.route.snapshot.paramMap.get('id');
+        if (param) {
+            const id = +param;
+            this.getProduct(id);
+        }
+    }
 
-  onBack(): void {
-    this.router.navigate(['/products']);
-  }
+    getProduct(id: number) {
+        this.productService.getProduct(id).subscribe({
+            next: product => this.product = product,
+            error: err => this.errorMessage = err
+        });
+    }
+
+    onBack(): void {
+        this.router.navigate(['/products']);
+    }
 }
